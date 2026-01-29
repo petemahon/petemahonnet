@@ -1,0 +1,106 @@
+baseurl      = "https://petemahon.net"
+title        = "Pete Mahon"
+languageCode = "en-us"
+theme        = "hello-friend-ng"
+pagination.pagerSize     = 10
+enableGitInfo = true
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
+
+[params]
+  dateform        = "Jan 2, 2006"
+  dateformShort   = "Jan 2"
+  dateformNum     = "2006-01-02"
+  dateformNumTime = "2006-01-02 15:04"
+
+  # Subtitle for home
+  homeSubtitle = "Gingerly exploring the space around me"
+
+  # Set a background for the homepage
+  backgroundImage = "images/background.jpg"
+
+  # Set disableReadOtherPosts to true in order to hide the links to other posts.
+  disableReadOtherPosts = false
+
+  # Enable sharing buttons, if you like
+  enableSharingButtons = true
+
+  # Reading time
+  #
+  # This option enables reading time part on post info
+  #
+  enableReadingTime = true
+  
+  # Show a global language switcher in the navigation bar
+  enableGlobalLanguageMenu = true
+
+  [params.author]
+  name = "Peter Mahon"
+
+  # Metadata mostly used in document's head
+  description = "Personal site"
+  keywords = "homepage, blog, gluten-free, recipes"
+  images = [""]
+
+  [[params.social]]
+  name = "linkedin"
+  url  = "https://www.linkedin.com/in/petemahon"
+
+[taxonomies]
+    category = "blog"
+    tag      = "tags"
+    series   = "series"
+
+[languages]
+  [languages.en]
+    title = "PeteMahon.net"
+    keywords = ""
+    copyright = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
+    readOtherPosts = "Read other posts"
+
+  [languages.en.params]
+    subtitle  = "Personal site"
+
+    [languages.en.params.logo]
+      logoText = "petemahon.net"
+      logoHomeLink = "/"
+    # or
+    #
+    # path = "/img/your-example-logo.svg"
+    # alt = "Your example logo alt text"
+    # Set true to remove the logo cursor entirely.
+    # logoCursorDisabled = false
+    # Set to a valid CSS color to change the cursor in the logo.
+    logoCursorColor    = "#B06500"
+    # Set to a valid CSS time value to change the animation duration, "0s" to disable.
+    # logoCursorAnimate  = "2s"
+    # Append the current url pathname to logoText 
+    # logoCursorPathname = true
+
+  # And you can even create generic menu
+  [[menu.main]]
+    identifier = "posts"
+    name       = "posts"
+    url        = "/posts"
+  
+  [[menu.main]]
+    identifier  = "about"
+    name        = "about"
+    url         = "/about"
+    hasChildren = false
+
+
+  # and submenus
+  [[menu.main]]
+    identifier  = "etc"
+    name        = "etc."
+    url         = "/etc"
+    hasChildren = true
+
+  [[menu.main]]
+    identifier  = "recipes"
+    name        = "recipes"
+    url         = "/etc/recipes"
+    parent      = "etc"
