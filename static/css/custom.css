@@ -1,0 +1,149 @@
+/* Custom overrides for hello-friend-ng theme */
+
+/* Recipe list styling */
+.recipes-count {
+  color: var(--color-secondary, #999);
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Compact recipe cards */
+.recipe-cards {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.recipe-card {
+  border-bottom: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+}
+
+.recipe-card:first-child {
+  border-top: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+}
+
+.recipe-card a {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 1rem;
+  padding: 0.75rem 0;
+  text-decoration: none;
+  color: inherit;
+}
+
+.recipe-card:hover {
+  background: var(--background-secondary, rgba(255, 255, 255, 0.05));
+}
+
+.recipe-card-title {
+  font-weight: 600;
+  color: inherit;
+}
+
+.recipe-card-details {
+  font-size: 0.85rem;
+  color: var(--color-secondary, #999);
+}
+
+.recipe-card-diet {
+  font-size: 0.75rem;
+  color: var(--color-accent-text, #2e7d32);
+  background: var(--color-accent, #e8f5e9);
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+}
+
+.no-recipes {
+  text-align: center;
+  color: var(--color-secondary, #999);
+  padding: 2rem;
+}
+
+/* Single recipe info box */
+.recipe-info-box {
+  background: var(--background-secondary, rgba(255, 255, 255, 0.05));
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.recipe-info-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  align-items: center;
+}
+
+.recipe-info-row + .recipe-info-row {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+}
+
+.recipe-info-item {
+  font-size: 0.95rem;
+  color: inherit;
+}
+
+.recipe-info-item strong {
+  color: var(--color-secondary, #999);
+  font-weight: normal;
+}
+
+/* Difficulty colors */
+.difficulty-easy {
+  color: #4caf50;
+}
+
+.difficulty-medium {
+  color: #ff9800;
+}
+
+.difficulty-hard {
+  color: #f44336;
+}
+
+/* Diet tags in single recipe */
+.recipe-diet {
+  gap: 0.5rem !important;
+}
+
+.diet-tag {
+  font-size: 0.75rem;
+  color: var(--color-accent-text, #2e7d32);
+  background: var(--color-accent, #e8f5e9);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+}
+
+/* Recipe image */
+.recipe-image {
+  margin: 1.5rem 0;
+}
+
+.recipe-image img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+/* Recipe source */
+.recipe-source {
+  font-size: 0.9rem;
+  color: var(--color-secondary, #999);
+  margin-top: 1.5rem;
+}
+
+/* Recipe tags */
+.recipe-tags {
+  font-size: 0.9rem;
+  color: var(--color-secondary, #999);
+}
+
+.recipe-tags a {
+  color: inherit;
+}

@@ -35,13 +35,58 @@ pagination.pagerSize     = 10
   # Show a global language switcher in the navigation bar
   enableGlobalLanguageMenu = true
 
+  # Use custom CSS for non-themed layout 
+  customCSS = ["/css/custom.css"]
+
   [params.author]
   name = "Peter Mahon"
 
   # Metadata mostly used in document's head
-  description = "Personal site"
+  description = "a random collection of things"
   keywords = "homepage, blog, gluten-free, recipes"
   images = [""]
+
+  # Custom footer 
+  [params.footer]
+    trademark = 2026
+    rss = true
+    copyright = true
+    author = true
+
+    topText = []
+    bottomText = [
+      "Powered by <a href=\"http://gohugo.io\">Hugo</a>"
+    ]
+
+  # Colors for favicons
+  #
+  [params.favicon.color]
+    mask = "#1b1c1d"
+    msapplication = "#1b1c1d"
+    theme = "#1b1c1d"
+
+  [params.logo]
+    logoMark     = ">"
+    logoText     = "$ cd /home/"
+    logoHomeLink = "/"
+    # Set true to remove the logo cursor entirely.
+    # logoCursorDisabled = false
+    # Set to a valid CSS color to change the cursor in the logo.
+     logoCursorColor    = "#b06500"
+    # Set to a valid CSS time value to change the animation duration, "0s" to disable.
+    # logoCursorAnimate  = "2s"
+    # Append the current url pathname to logoText 
+    # logoCursorPathname = true
+
+  # # # # # # # # # # # # # # # # # # # # # # # # # # # # #  
+  # Addon: Startpage portrait 
+  # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+  # Uncomment this if you want a portrait on your start page
+  #
+  # [params.portrait]
+  #   path     = "/img/image.jpg"
+  #   alt      = "Portrait"
+  #   maxWidth = "50px"
 
   [[params.social]]
   name = "linkedin"
@@ -62,21 +107,6 @@ pagination.pagerSize     = 10
   [languages.en.params]
     subtitle  = "Personal site"
 
-    [languages.en.params.logo]
-      logoText = "petemahon.net"
-      logoHomeLink = "https://petemahon.net/"
-    # or
-    #
-    # path = "/img/your-example-logo.svg"
-    # alt = "Your example logo alt text"
-    # Set true to remove the logo cursor entirely.
-    # logoCursorDisabled = false
-    # Set to a valid CSS color to change the cursor in the logo.
-    logoCursorColor    = "#B06500"
-    # Set to a valid CSS time value to change the animation duration, "0s" to disable.
-    # logoCursorAnimate  = "2s"
-    # Append the current url pathname to logoText 
-    # logoCursorPathname = true
 
   # And you can even create generic menu
   [[menu.main]]

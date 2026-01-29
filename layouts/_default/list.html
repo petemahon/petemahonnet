@@ -1,0 +1,39 @@
+{{ define "main" }}
+<div class="content">
+  <main class="post">
+    <article>
+      <h2 class="post-title"><a href="{{ .RelPermalink }}">{{ .Title | default "Recipes" }}</a></h2>
+      
+      <div class="post-content">
+        <p class="recipes-count">{{ len .Pages }} {{ if eq (len .Pages) 1 }}recipe{{ else }}recipes{{ end }}</p>
+
+        {{ if .Pages }}
+          <ul class="recipe-cards">
+            {{ range .Pages.ByTitle }}
+              <li class="recipe-card">
+                <a href="{{ .RelPermalink }}">
+                  <span class="recipe-card-title">{{ .Title }}</span>
+                  <span class="recipe-card-details">
+                    {{- with .Params.cuisine }}{{ . }}{{ end -}}
+                    {{- with .Params.course }} · {{ . }}{{ end -}}
+                    {{- with .Params.difficulty }} · {{ . }}{{ end -}}
+                    {{- with .Params.totaltime }} · {{ . }}{{ end -}}
+                    {{- with .Params.servings }} · Serves {{ . }}{{ end -}}
+                  </span>
+                  {{- with .Params.diet }}
+                    <span class="recipe-card-diet">
+                      {{- range $i, $d := . }}{{ if $i }}, {{ end }}{{ $d }}{{ end -}}
+                    </span>
+                  {{- end }}
+                </a>
+              </li>
+            {{ end }}
+          </ul>
+        {{ else }}
+          <p class="no-recipes">No recipes found.</p>
+        {{ end }}
+      </div>
+    </article>
+  </main>
+</div>
+{{ end }}

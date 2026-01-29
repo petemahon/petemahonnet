@@ -1,0 +1,162 @@
+{{ define "main" }}
+{{/* Cuisine to flag emoji mapping */}}
+{{ $flags := dict 
+  "Italian" "🇮🇹"
+  "Mexican" "🇲🇽"
+  "French" "🇫🇷"
+  "Chinese" "🇨🇳"
+  "Japanese" "🇯🇵"
+  "Indian" "🇮🇳"
+  "Thai" "🇹🇭"
+  "Greek" "🇬🇷"
+  "Spanish" "🇪🇸"
+  "American" "🇺🇸"
+  "British" "🇬🇧"
+  "Korean" "🇰🇷"
+  "Vietnamese" "🇻🇳"
+  "German" "🇩🇪"
+  "Moroccan" "🇲🇦"
+  "Lebanese" "🇱🇧"
+  "Turkish" "🇹🇷"
+  "Portuguese" "🇵🇹"
+  "Brazilian" "🇧🇷"
+  "Caribbean" "🇯🇲"
+}}
+
+<div class="content">
+  <main class="post">
+    <article class="recipe" itemscope itemtype="https://schema.org/Recipe">
+      <h2 class="post-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+
+      <div class="post-content">
+        {{/* Recipe Info Box */}}
+        <div class="recipe-info-box">
+          {{ if or .Params.cuisine .Params.course .Params.difficulty }}
+            <div class="recipe-info-row">
+              {{ with .Params.cuisine }}
+                {{ $flag := index $flags . }}
+                <span class="recipe-info-item" itemprop="recipeCuisine">
+                  {{ with $flag }}{{ . }} {{ end }}{{ . }}
+                </span>
+              {{ end }}
+              {{ with .Params.course }}<span class="recipe-info-item" itemprop="recipeCategory">{{ . }}</span>{{ end }}
+              {{ with .Params.difficulty }}<span class="recipe-info-item difficulty-{{ . }}">{{ . }}</span>{{ end }}
+            </div>
+          {{ end }}
+
+          {{ if or .Params.preptime .Params.cooktime .Params.totaltime .Params.servings .Params.yield }}
+            <div class="recipe-info-row recipe-timing">
+              {{ with .Params.preptime }}
+                <span class="recipe-info-item">
+                  <strong>Prep:</strong> <span itemprop="prepTime" content="{{ . }}">{{ . }}</span>
+                </span>
+              {{ end }}
+              {{ with .Params.cooktime }}
+                <span class="recipe-info-item">
+                  <strong>Cook:</strong> <span itemprop="cookTime" content="{{ . }}">{{ . }}</span>
+                </span>
+              {{ end }}
+              {{ with .Params.totaltime }}
+                <span class="recipe-info-item">
+                  <strong>Total:</strong> <span itemprop="totalTime" content="{{ . }}">{{ . }}</span>
+                </span>
+              {{ end }}
+              {{ with .Params.servings }}
+                <span class="recipe-info-item">
+                  <strong>Serves:</strong> <span itemprop="recipeYield">{{ . }}</span>
+                </span>
+              {{ end }}
+              {{ with .Params.yield }}
+                <span class="recipe-info-item">
+                  <strong>Makes:</strong> <span itemprop="recipeYield">{{ . }}</span>
+                </span>
+              {{ end }}
+            </div>
+          {{ end }}
+
+          {{ with .Params.diet }}
+            <div class="recipe-info-row recipe-diet">
+              {{ range . }}
+                <span class="diet-tag" itemprop="suitableForDiet">{{ . }}</span>
+              {{ end }}
+            </div>
+          {{ end }}
+        </div>
+
+        {{/* Featured Image */}}
+        {{ with .Params.image }}
+          <figure class="recipe-image">
+            <img src="{{ . | relURL }}" alt="{{ $.Title }}" itemprop="image" loading="lazy">
+          </figure>
+        {{ end }}
+
+        {{/* Main Content */}}
+        <div itemprop="description">
+          {{ .Content }}
+        </div>
+
+        {{/* Source */}}
+        {{ with .Params.source }}
+          {{ if ne . "Adapted" }}
+            <p class="recipe-source">Source: <a href="{{ . }}" rel="noopener" itemprop="isBasedOn">{{ . }}</a></p>
+          {{ end }}
+        {{ end }}
+      </div>
+    </article>
+
+    <hr>
+
+    <div class="post-info">
+      {{ with .Params.tags }}
+        <p class="recipe-tags">
+          Tags: {{ range $i, $t := . }}{{ if $i }}, {{ end }}<a href="{{ "tags/" | relURL }}{{ . | urlize }}/">{{ . }}</a>{{ end }}
+        </p>
+      {{ end }}
+    </div>
+  </main>
+</div>
+
+{{/* JSON-LD Structured Data for SEO */}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Recipe",
+  "name": {{ .Title | jsonify }},
+  "datePublished": "{{ .Date.Format "2006-01-02" }}",
+  {{- with .Params.image }}
+  "image": "{{ . | absURL }}",
+  {{- end }}
+  {{- with .Params.cuisine }}
+  "recipeCuisine": {{ . | jsonify }},
+  {{- end }}
+  {{- with .Params.course }}
+  "recipeCategory": {{ . | jsonify }},
+  {{- end }}
+  {{- with .Params.preptime }}
+  "prepTime": {{ . | jsonify }},
+  {{- end }}
+  {{- with .Params.cooktime }}
+  "cookTime": {{ . | jsonify }},
+  {{- end }}
+  {{- with .Params.totaltime }}
+  "totalTime": {{ . | jsonify }},
+  {{- end }}
+  {{- with .Params.servings }}
+  "recipeYield": "{{ . }} servings",
+  {{- end }}
+  {{- with .Params.yield }}
+  "recipeYield": {{ . | jsonify }},
+  {{- end }}
+  {{- with .Params.diet }}
+  "suitableForDiet": {{ . | jsonify }},
+  {{- end }}
+  {{- with .Params.keywords }}
+  "keywords": {{ . | jsonify }},
+  {{- end }}
+  "author": {
+    "@type": "Person",
+    "name": {{ with .Params.author }}{{ . | jsonify }}{{ else }}"{{ .Site.Params.author | default "Unknown" }}"{{ end }}
+  }
+}
+</script>
+{{ end }}
