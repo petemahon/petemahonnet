@@ -1,9 +1,8 @@
-baseurl      = "https://petemahon.net"
+baseurl      = "https://petemahon.github.io/"
 title        = "Pete Mahon"
 languageCode = "en-us"
 theme        = "hello-friend-ng"
 pagination.pagerSize     = 10
-enableGitInfo = true
 
 [caches]
   [caches.images]
@@ -65,7 +64,7 @@ enableGitInfo = true
 
     [languages.en.params.logo]
       logoText = "petemahon.net"
-      logoHomeLink = "/"
+      logoHomeLink = "https://petemahon.net/"
     # or
     #
     # path = "/img/your-example-logo.svg"
