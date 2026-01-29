@@ -1,0 +1,36 @@
+{{ $logoMark := .Site.Params.logo.logoMark | default ">" }}
+{{ $logoCursorColor := .Site.Params.logo.logoCursorColor | default "" }}
+{{ $logoCursorAnimate := .Site.Params.logo.logoCursorAnimate | default "2s" }}
+{{ $logoCursorDisabled := .Site.Params.logo.logoCursorDisabled | default false }}
+
+{{/* Check if we're on a single recipe page (not the list) */}}
+{{ $isRecipePage := and (hasPrefix .RelPermalink "/etc/recipes/") .IsPage }}
+
+{{ if $isRecipePage }}
+  {{/* Recipe page: link to recipes list */}}
+  <a href="/etc/recipes/" style="text-decoration: none;">
+{{ else }}
+  {{/* All other pages: link to home */}}
+  <a href="{{ .Site.Params.logo.logoHomeLink | default "/" | relURL }}" style="text-decoration: none;">
+{{ end }}
+
+    <div class="logo">
+        {{ with $logoMark }}
+            <span class="logo__mark">{{ . }}</span>
+        {{ end }}
+        <span class="logo__text">
+            {{- if $isRecipePage -}}
+                $ cd /home/etc/recipes
+            {{- else -}}
+                {{ .Site.Params.logo.logoText | default "$ cd /home/" }}
+            {{- end -}}
+        </span>
+        {{ if not $logoCursorDisabled }}
+            <span class="logo__cursor" style="
+                {{- with $logoCursorColor }}background-color:{{ . }};{{ end -}}
+                {{- if eq $logoCursorAnimate "0s" }}animation: none;{{ end -}}
+                {{- if and (ne $logoCursorAnimate "0s") (ne $logoCursorAnimate "2s") }}animation-duration: {{ $logoCursorAnimate }};{{ end -}}
+            "></span>
+        {{ end }}
+    </div>
+</a>
