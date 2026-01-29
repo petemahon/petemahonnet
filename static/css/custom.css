@@ -147,3 +147,27 @@
 .recipe-tags a {
   color: inherit;
 }
+
+/* Fix mobile submenu overflow for right-aligned menu */
+@media screen and (max-width: 768px) {
+  .menu .submenu .dropdown-content {
+    /* Position submenu to the left instead of right */
+    right: 0;
+    left: auto;
+  }
+  
+  /* Ensure menu container doesn't cause horizontal scroll */
+  .menu {
+    max-width: 100%;
+    overflow-x: visible;
+  }
+  
+  /* Alternative: Make submenu full-width on mobile */
+  .menu .submenu .dropdown-content {
+    position: fixed;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    max-width: 100vw;
+  }
+}
