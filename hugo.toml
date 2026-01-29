@@ -18,7 +18,7 @@ pagination.pagerSize     = 10
   homeSubtitle = "Gingerly exploring the space around me"
 
   # Set a background for the homepage
-  backgroundImage = "images/background.jpg"
+  backgroundImage = "images/background.png"
 
   # Set disableReadOtherPosts to true in order to hide the links to other posts.
   disableReadOtherPosts = false
@@ -124,7 +124,7 @@ pagination.pagerSize     = 10
   # and submenus
   [[menu.main]]
     identifier  = "etc"
-    name        = "etc."
+    name        = "etc"
     url         = "/etc"
     hasChildren = true
 
