@@ -1,7 +1,7 @@
 +++
 date = '2026-01-29T09:58:25+04:00'
 draft = false
-title = 'About'
+title = 'This Site'
 +++
 The one thing I have noticed is how much I don't write things down.
 

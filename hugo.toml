@@ -88,9 +88,9 @@ pagination.pagerSize     = 10
   #   alt      = "Portrait"
   #   maxWidth = "50px"
 
-  [[params.social]]
-  name = "linkedin"
-  url  = "https://www.linkedin.com/in/petemahon"
+  #[[params.social]]
+  #name = "linkedin"
+  #url  = "https://www.linkedin.com/in/petemahon"
 
 [taxonomies]
     category = "blog"
@@ -118,7 +118,19 @@ pagination.pagerSize     = 10
     identifier  = "about"
     name        = "about"
     url         = "/about"
-    hasChildren = false
+    hasChildren = true
+
+  [[menu.main]]
+    identifier  = "thissite"
+    name        = "this site"
+    url         = "/about/thissite"
+    parent      = "about"
+
+  [[menu.main]]
+    identifier  = "me"
+    name        = "me"
+    url         = "/about/me"
+    parent      = "about"
 
 
   # and submenus
