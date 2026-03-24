@@ -1,4 +1,4 @@
-baseurl      = "https://petemahon.github.io/"
+baseurl      = "https://petemahon.net/"
 title        = "Pete Mahon"
 languageCode = "en-us"
 theme        = "hello-friend-ng"
@@ -93,7 +93,7 @@ pagination.pagerSize     = 10
   #url  = "https://www.linkedin.com/in/petemahon"
 
 [taxonomies]
-    category = "blog"
+    category = "categories"
     tag      = "tags"
     series   = "series"
 

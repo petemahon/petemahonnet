@@ -155,7 +155,7 @@
   {{- end }}
   "author": {
     "@type": "Person",
-    "name": {{ with .Params.author }}{{ . | jsonify }}{{ else }}"{{ .Site.Params.author | default "Unknown" }}"{{ end }}
+    "name": {{ with .Params.author }}{{ . | jsonify }}{{ else }}{{ with .Site.Params.author.name }}{{ . | jsonify }}{{ else }}"Unknown"{{ end }}{{ end }}
   }
 }
 </script>
