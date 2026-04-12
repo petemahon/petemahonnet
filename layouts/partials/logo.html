@@ -3,17 +3,17 @@
 {{ $logoCursorAnimate := .Site.Params.logo.logoCursorAnimate | default "2s" }}
 {{ $logoCursorDisabled := .Site.Params.logo.logoCursorDisabled | default false }}
 
-{{/* Check if we're on a single recipe page (not the list) */}}
 {{ $isRecipePage := and (hasPrefix .RelPermalink "/etc/recipes/") .IsPage }}
+{{ $isPostPage := and (hasPrefix .RelPermalink "/posts/") .IsPage }}
 
+{{/* Single <a> block — recipe → recipes list, post → posts list, else → home */}}
 {{ if $isRecipePage }}
-  {{/* Recipe page: link to recipes list */}}
   <a href="/etc/recipes/" style="text-decoration: none;">
+{{ else if $isPostPage }}
+  <a href="/posts/" style="text-decoration: none;">
 {{ else }}
-  {{/* All other pages: link to home */}}
   <a href="{{ .Site.Params.logo.logoHomeLink | default "/" | relURL }}" style="text-decoration: none;">
 {{ end }}
-
     <div class="logo">
         {{ with $logoMark }}
             <span class="logo__mark">{{ . }}</span>
@@ -21,6 +21,8 @@
         <span class="logo__text">
             {{- if $isRecipePage -}}
                 $ cd /home/etc/recipes
+            {{- else if $isPostPage -}}
+                $ cd /home/posts
             {{- else -}}
                 {{ .Site.Params.logo.logoText | default "$ cd /home/" }}
             {{- end -}}
