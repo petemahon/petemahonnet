@@ -3,14 +3,22 @@
   <main class="post">
     <article>
       <h2 class="post-title"><a href="{{ .RelPermalink }}">{{ .Title | default "Recipes" }}</a></h2>
-      
+
       <div class="post-content">
-        <p class="recipes-count">{{ len .Pages }} {{ if eq (len .Pages) 1 }}recipe{{ else }}recipes{{ end }}</p>
+        <div class="recipes-header">
+          <p class="recipes-count">{{ len .Pages }} {{ if eq (len .Pages) 1 }}recipe{{ else }}recipes{{ end }}</p>
+          {{ if gt (len .Pages) 1 }}
+            <div class="recipes-sort" role="tablist" aria-label="Sort recipes">
+              <button type="button" class="sort-option" data-sort="alpha" role="tab">A-Z</button>
+              <button type="button" class="sort-option active" data-sort="recent" role="tab">Recent</button>
+            </div>
+          {{ end }}
+        </div>
 
         {{ if .Pages }}
-          <ul class="recipe-cards">
-            {{ range .Pages.ByTitle }}
-              <li class="recipe-card">
+          <ul class="recipe-cards" id="recipe-list">
+            {{ range .Pages.ByDate.Reverse }}
+              <li class="recipe-card" data-title="{{ .Title }}" data-date="{{ .Date.Format "2006-01-02" }}">
                 <a href="{{ .RelPermalink }}">
                   <span class="recipe-card-title">{{ .Title }}</span>
                   <span class="recipe-card-details">
@@ -36,4 +44,46 @@
     </article>
   </main>
 </div>
+
+<script>
+(function () {
+  var list = document.getElementById('recipe-list');
+  if (!list) return;
+
+  var buttons = document.querySelectorAll('.recipes-sort .sort-option');
+  if (!buttons.length) return;
+
+  var items = Array.prototype.slice.call(list.querySelectorAll('.recipe-card'));
+  var STORAGE_KEY = 'recipes-sort';
+
+  function sortBy(mode) {
+    var sorted;
+    if (mode === 'alpha') {
+      sorted = items.slice().sort(function (a, b) {
+        return a.dataset.title.localeCompare(b.dataset.title, undefined, { sensitivity: 'base' });
+      });
+    } else {
+      mode = 'recent';
+      sorted = items.slice().sort(function (a, b) {
+        return b.dataset.date.localeCompare(a.dataset.date);
+      });
+    }
+    sorted.forEach(function (item) { list.appendChild(item); });
+
+    buttons.forEach(function (btn) {
+      btn.classList.toggle('active', btn.dataset.sort === mode);
+    });
+
+    try { localStorage.setItem(STORAGE_KEY, mode); } catch (e) { /* ignore */ }
+  }
+
+  buttons.forEach(function (btn) {
+    btn.addEventListener('click', function () { sortBy(btn.dataset.sort); });
+  });
+
+  var saved = null;
+  try { saved = localStorage.getItem(STORAGE_KEY); } catch (e) { /* ignore */ }
+  sortBy(saved === 'alpha' ? 'alpha' : 'recent');
+})();
+</script>
 {{ end }}
