@@ -3,6 +3,7 @@ title        = "Pete Mahon"
 languageCode = "en-us"
 theme        = "hello-friend-ng"
 pagination.pagerSize     = 10
+buildFuture = false
 
 [caches]
   [caches.images]

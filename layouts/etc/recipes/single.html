@@ -95,9 +95,43 @@
           {{ .Content }}
         </div>
 
+        {{/* Nutrition */}}
+        {{ $n := .Params.nutrition }}
+        {{ if $n }}
+          {{ if or $n.calories $n.protein $n.carbs $n.fat $n.fiber $n.sodium }}
+            <div class="recipe-nutrition" itemprop="nutrition" itemscope itemtype="https://schema.org/NutritionInformation">
+              <h3 class="recipe-nutrition-title">
+                Nutrition <span class="recipe-nutrition-note">(per serving, approximate)</span>
+              </h3>
+              <div class="recipe-info-row">
+                {{ with $n.calories }}
+                  <span class="recipe-info-item"><strong>Calories:</strong> <span itemprop="calories">{{ . }}</span></span>
+                {{ end }}
+                {{ with $n.protein }}
+                  <span class="recipe-info-item"><strong>Protein:</strong> <span itemprop="proteinContent">{{ . }}</span></span>
+                {{ end }}
+                {{ with $n.carbs }}
+                  <span class="recipe-info-item"><strong>Carbs:</strong> <span itemprop="carbohydrateContent">{{ . }}</span></span>
+                {{ end }}
+                {{ with $n.fat }}
+                  <span class="recipe-info-item"><strong>Fat:</strong> <span itemprop="fatContent">{{ . }}</span></span>
+                {{ end }}
+                {{ with $n.fiber }}
+                  <span class="recipe-info-item"><strong>Fibre:</strong> <span itemprop="fiberContent">{{ . }}</span></span>
+                {{ end }}
+                {{ with $n.sodium }}
+                  <span class="recipe-info-item"><strong>Sodium:</strong> <span itemprop="sodiumContent">{{ . }}</span></span>
+                {{ end }}
+              </div>
+            </div>
+          {{ end }}
+        {{ end }}
+
         {{/* Source */}}
         {{ with .Params.source }}
-          {{ if ne . "Adapted" }}
+          {{ if eq . "Adapted" }}
+            <p class="recipe-source">Source: Adapted</p>
+          {{ else }}
             <p class="recipe-source">Source: <a href="{{ . }}" rel="noopener" itemprop="isBasedOn">{{ . }}</a></p>
           {{ end }}
         {{ end }}
@@ -153,9 +187,35 @@
   {{- with .Params.keywords }}
   "keywords": {{ . | jsonify }},
   {{- end }}
+  {{- $n := .Params.nutrition }}
+  {{- if $n }}
+    {{- if or $n.calories $n.protein $n.carbs $n.fat $n.fiber $n.sodium }}
+  "nutrition": {
+    "@type": "NutritionInformation"
+      {{- with $n.calories }},
+    "calories": {{ . | jsonify }}
+      {{- end }}
+      {{- with $n.protein }},
+    "proteinContent": {{ . | jsonify }}
+      {{- end }}
+      {{- with $n.carbs }},
+    "carbohydrateContent": {{ . | jsonify }}
+      {{- end }}
+      {{- with $n.fat }},
+    "fatContent": {{ . | jsonify }}
+      {{- end }}
+      {{- with $n.fiber }},
+    "fiberContent": {{ . | jsonify }}
+      {{- end }}
+      {{- with $n.sodium }},
+    "sodiumContent": {{ . | jsonify }}
+      {{- end }}
+  },
+    {{- end }}
+  {{- end }}
   "author": {
     "@type": "Person",
-    "name": {{ with .Params.author }}{{ . | jsonify }}{{ else }}{{ with .Site.Params.author.name }}{{ . | jsonify }}{{ else }}"Unknown"{{ end }}{{ end }}
+    "name": {{ with .Params.author }}{{ . | jsonify }}{{ else }}"{{ .Site.Params.author | default "Unknown" }}"{{ end }}
   }
 }
 </script>

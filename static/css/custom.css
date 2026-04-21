@@ -159,3 +159,24 @@
     max-width: 80vw;
   }
 }
+
+/* Recipe nutrition box */
+.recipe-nutrition {
+  background: var(--background-secondary, rgba(255, 255, 255, 0.05));
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.recipe-nutrition-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem 0;
+}
+
+.recipe-nutrition-note {
+  font-weight: normal;
+  font-size: 0.85rem;
+  color: var(--color-secondary, #999);
+}
