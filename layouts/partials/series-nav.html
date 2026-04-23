@@ -1,0 +1,56 @@
+{{/* layouts/partials/series-nav.html */}}
+{{/*
+  Renders series navigation on posts that have `series` set in front matter.
+  - First post in the series (by series_order): shows an index of all posts.
+  - All other posts: show Previous / Next links.
+  Required front matter:
+    series       = ["Series Name"]
+    series_order = 1   (integer, 1-based)
+*/}}
+
+{{ $currentPage := . }}
+{{ with .Params.series }}
+  {{ $seriesName := index . 0 }}
+  {{ $seriesPages := where site.RegularPages "Params.series" "intersect" (slice $seriesName) }}
+  {{ $seriesPages = sort $seriesPages "Params.series_order" }}
+  {{ $totalCount := len $seriesPages }}
+
+  {{/* Find current page's position in the sorted list */}}
+  {{ $currentIndex := 0 }}
+  {{ range $i, $p := $seriesPages }}
+    {{ if eq $p.RelPermalink $currentPage.RelPermalink }}
+      {{ $currentIndex = $i }}
+    {{ end }}
+  {{ end }}
+
+  {{ $isFirst := eq $currentIndex 0 }}
+
+  <aside class="series-nav {{ if $isFirst }}series-nav-index{{ else }}series-nav-prevnext{{ end }}">
+    {{ if $isFirst }}
+      <p class="series-nav-header">Posts in this series — <strong>{{ $seriesName }}</strong>:</p>
+      <ol class="series-nav-list">
+        {{ range $seriesPages }}
+          <li>
+            {{ if eq .RelPermalink $currentPage.RelPermalink }}
+              <strong>{{ .Title }}</strong> <em>(this post)</em>
+            {{ else }}
+              <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            {{ end }}
+          </li>
+        {{ end }}
+      </ol>
+    {{ else }}
+      <p class="series-nav-header">
+        Part {{ add $currentIndex 1 }} of {{ $totalCount }} in <strong>{{ $seriesName }}</strong>
+      </p>
+      <div class="series-nav-links">
+        {{ $prev := index $seriesPages (sub $currentIndex 1) }}
+        <a class="series-nav-prev" href="{{ $prev.RelPermalink }}">← {{ $prev.Title }}</a>
+        {{ if lt (add $currentIndex 1) $totalCount }}
+          {{ $next := index $seriesPages (add $currentIndex 1) }}
+          <a class="series-nav-next" href="{{ $next.RelPermalink }}">{{ $next.Title }} →</a>
+        {{ end }}
+      </div>
+    {{ end }}
+  </aside>
+{{ end }}
