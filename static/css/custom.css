@@ -289,3 +289,42 @@
   max-width: 100%;
   height: auto;
 }
+
+/* Frame images inside posts so they don't float lost in the text */
+.post-content img {
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.15));
+  border-radius: 6px;
+  padding: 4px;
+  background: var(--background-secondary, rgba(255, 255, 255, 0.03));
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.5rem auto;
+}
+
+/* Don't double-frame the cover image (already in a figure) */
+.post-cover img {
+  border: none;
+  padding: 0;
+  background: none;
+  margin: 0 auto;
+}
+
+/* Make inline code visually distinct from regular text */
+.post-content code {
+  background: var(--background-secondary, rgba(255, 255, 255, 0.08));
+  color: #e8a87c;
+  padding: 0.15em 0.4em;
+  border-radius: 3px;
+  font-size: 0.9em;
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+}
+
+/* But not inside code blocks (pre wraps them) — those already have their own styling */
+.post-content pre code {
+  background: none;
+  color: inherit;
+  padding: 0;
+  border: none;
+  font-size: inherit;
+}

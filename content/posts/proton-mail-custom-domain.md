@@ -157,12 +157,12 @@ Let me break that down.
 
 | Tag | Value | Name | Explanation |
 | --- | ----- | ---- | ----------- |
-| v | DMARC1 | Version | Identifies the TXT record as DMARC, Version 1. |
-| p | quarantine | Policy | Tells the recipient what to do if an email fails both SPF and DKIM. For testing, you can use 'none', better to have 'quarantine', and if you are supremely confident that all your emails will be delivered, you can choose  'reject'. |
-| pct | 100 | Percentage | Percentage of messages from this domain to which the DMARC policy is to be applied. I want all my emails tested as I send very low volumes. |
-| rua | mailto:user@dom.com | Receivers | Email address where feedback is to be sent. Can be multiple addresses, and you can include one of your own email addresses if you're interested in seeing the content like this `mailto:user@dom.com, mailto:me@gmail.com`. My record includes the PostMarkApp return address. |
-| sp | none | Sub-domain Policy | Policy for all subdomains. Same values as for the Policy tag. I don't send emails from my sub-domains. |
-| aspf | r | Alignment Mode SPF | If you never use a service to send your emails other than Proton, set this to "s" (strict). If you use any email service like Resend, Mailchimp etc, set it to "r" (relaxed), so that Return-Path addresses for bounce notifications work correctly. |
+| `v` | `DMARC1` | Version | Identifies the TXT record as DMARC, Version 1. |
+| `p` | `quarantine` | Policy | Tells the recipient what to do if an email fails both SPF and DKIM. For testing, you can use 'none', better to have 'quarantine', and if you are supremely confident that all your emails will be delivered, you can choose  'reject'. |
+| `pct` | `100` | Percentage | Percentage of messages from this domain to which the DMARC policy is to be applied. I want all my emails tested as I send very low volumes. |
+| `rua` | `mailto:user@dom.com` | Receivers | Email address where feedback is to be sent. Can be multiple addresses, and you can include one of your own email addresses if you're interested in seeing the content like this `mailto:user@dom.com, mailto:me@gmail.com`. My record includes the PostMarkApp return address. |
+| `sp` | `none` | Sub-domain Policy | Policy for all subdomains. Same values as for the Policy tag. I don't send emails from my sub-domains. |
+| `aspf` | `r` | Alignment Mode SPF | If you never use a service to send your emails other than Proton, set this to "s" (strict). If you use any email service like Resend, Mailchimp etc, set it to "r" (relaxed), so that Return-Path addresses for bounce notifications work correctly. |
 
 Save your DMARC record at Cloudflare and ensure it is a TXT type record.
 
