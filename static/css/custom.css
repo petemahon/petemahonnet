@@ -328,3 +328,92 @@
   border: none;
   font-size: inherit;
 }
+/* ---------------------------------------------------------
+   Homepage: subtitle + recent posts
+   Left-aligned to match header logo position (760px inner)
+   --------------------------------------------------------- */
+
+.homepage {
+  flex: 1 auto;
+  width: 100%;
+  text-align: left;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.homepage-inner {
+  width: 760px;
+  max-width: 100%;
+  margin: 2rem auto;
+}
+
+.homepage-title {
+  font-family: var(--font-mono, 'Fira Code', Menlo, monospace);
+  line-height: 1.2;
+  margin: 0 0 0.4rem;
+}
+
+.homepage-subtitle {
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #c5c5cc;
+  margin: 0 0 2.5rem;
+}
+
+.homepage-posts-prompt {
+  font-family: var(--font-mono, 'Fira Code', Menlo, monospace);
+  font-size: 0.95rem;
+  color: var(--color-secondary, #999);
+  margin: 0 0 0.4rem;
+}
+
+.homepage-post-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.homepage-post-item a {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.4rem 0;
+  text-decoration: none;
+  color: inherit;
+  font-family: var(--font-mono, 'Fira Code', Menlo, monospace);
+  line-height: 1.5;
+  transition: color 0.15s ease;
+}
+
+.homepage-post-title {
+  flex: 1;
+  min-width: 0;
+}
+
+.homepage-post-date {
+  color: var(--color-secondary, #999);
+  font-size: 0.85rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.homepage-post-item a:hover,
+.homepage-post-item a:hover .homepage-post-date {
+  color: #b06500;
+}
+
+.homepage-posts-more {
+  display: inline-block;
+  margin-top: 1rem;
+  font-family: var(--font-mono, 'Fira Code', Menlo, monospace);
+  font-size: 0.95rem;
+  color: #c5c5cc;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.homepage-posts-more:hover {
+  color: #b06500;
+}

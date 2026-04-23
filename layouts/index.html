@@ -1,0 +1,32 @@
+{{ define "body" }}
+    <body class="{{ if .Site.Params.backgroundImage }} background-image" style="background-image: url('{{ .Site.Params.backgroundImage }}');" {{ else }}"{{ end }}>
+{{ end }}
+
+{{ define "main" }}
+<div class="homepage">
+  <div class="homepage-inner">
+    <h1 class="homepage-title">{{ .Site.Title }}</h1>
+    {{ with .Site.Params.homeSubtitle }}
+      <p class="homepage-subtitle">{{ . }}</p>
+    {{ end }}
+
+    {{ $posts := first 5 (where .Site.RegularPages "Section" "posts") }}
+    {{ with $posts }}
+      <section class="homepage-posts">
+        <p class="homepage-posts-prompt">$ ls -t ~/posts/ | head -5</p>
+        <ul class="homepage-post-list">
+          {{ range . }}
+            <li class="homepage-post-item">
+              <a href="{{ .RelPermalink }}">
+                <span class="homepage-post-title">{{ .Title }}</span>
+                <span class="homepage-post-date">{{ .Date.Format $.Site.Params.dateformNum }}</span>
+              </a>
+            </li>
+          {{ end }}
+        </ul>
+        <a href="{{ "/posts/" | relURL }}" class="homepage-posts-more">&gt; see all posts</a>
+      </section>
+    {{ end }}
+  </div>
+</div>
+{{ end }}
