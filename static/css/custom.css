@@ -442,6 +442,102 @@
   color: var(--fg3);
 }
 
+/* ---------- Posts — list ---------- */
+.posts-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.posts-count {
+  color: var(--fg3);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.posts-sort {
+  display: flex;
+  gap: 1.25rem;
+  font-size: 0.9rem;
+}
+
+.posts-table {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border-faint);
+}
+
+/* 4 columns: post | series | tags | date */
+.post-row {
+  display: grid;
+  grid-template-columns: 2fr 0.9fr 1.4fr 0.7fr;
+  gap: 16px;
+  align-items: center;
+  padding: 10px 8px;
+  border-bottom: 1px solid var(--border-faint);
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.15s ease;
+}
+
+.post-row:hover {
+  background: var(--bg-lift);
+}
+
+.post-row--head {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--fg3);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 6px 8px;
+  cursor: default;
+}
+
+.post-row--head:hover {
+  background: transparent;
+}
+
+.post-row__title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--fg1);
+}
+
+.post-row__series {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--fg3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.post-row__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.post-row__date {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--fg3);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Neutral ghost pill for post tags */
+.pill--tag {
+  color: var(--fg3);
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+}
+
 /* ---------- Mobile ---------- */
 @media screen and (max-width: 684px) {
   .recipe-row {
@@ -456,6 +552,20 @@
   .recipe-row__ease::before   { content: 'ease: '; color: var(--fg3); }
   .recipe-row__time::before   { content: 'time: '; color: var(--fg3); }
   .recipe-row__cuisine::before { content: 'cuisine: '; color: var(--fg3); }
+
+  .post-row {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 2px 16px;
+  }
+
+  .post-row__title  { grid-column: 1; grid-row: 1; }
+  .post-row__date   { grid-column: 2; grid-row: 1; }
+  .post-row__series { grid-column: 1; grid-row: 2; }
+  .post-row__tags   { grid-column: 2; grid-row: 2; justify-content: flex-end; }
+
+  .post-row--head { display: none; }
+
 
   .menu .submenu .dropdown-content,
   .dropdown-content {

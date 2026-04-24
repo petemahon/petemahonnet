@@ -1,0 +1,108 @@
+{{ define "main" }}
+<div class="content">
+  <main class="post">
+    <article>
+      <h2 class="post-title"><a href="{{ .RelPermalink }}">{{ .Title | default "Posts" }}</a></h2>
+
+      <div class="post-content">
+
+        {{/* ---- Sort header ---- */}}
+        <div class="posts-header">
+          <p class="posts-count">{{ len .Data.Pages }} {{ if eq (len .Data.Pages) 1 }}post{{ else }}posts{{ end }}</p>
+          {{ if gt (len .Data.Pages) 1 }}
+            <div class="posts-sort" role="tablist" aria-label="Sort posts">
+              <button type="button" class="sort-option" data-sort="alpha" role="tab">A-Z</button>
+              <button type="button" class="sort-option active" data-sort="recent" role="tab">Recent</button>
+            </div>
+          {{ end }}
+        </div>
+
+        {{/* ---- Series name → short label ---- */}}
+        {{ $seriesMap := dict
+          "Migrating from Microsoft 365 to Proton" "M365 → Proton"
+        }}
+
+        {{/* ---- Table ---- */}}
+        <div class="posts-table" id="posts-list">
+
+          <div class="post-row post-row--head">
+            <span>post</span>
+            <span>series</span>
+            <span>tags</span>
+            <span>date</span>
+          </div>
+
+          {{ range .Data.Pages.ByDate.Reverse }}
+            {{ $seriesLabel := "" }}
+            {{ with .Params.series }}
+              {{ $name := index . 0 }}
+              {{ $seriesLabel = index $seriesMap $name | default $name }}
+            {{ end }}
+
+            <a class="post-row"
+               href="{{ .RelPermalink }}"
+               data-title="{{ .Title }}"
+               data-date="{{ .Date.Format "2006-01-02" }}">
+
+              <span class="post-row__title">{{ .Title }}</span>
+
+              <span class="post-row__series">{{ $seriesLabel }}</span>
+
+              <span class="post-row__tags">
+                {{ range first 3 .Params.tags }}
+                  <span class="pill pill--tag">{{ . }}</span>
+                {{ end }}
+              </span>
+
+              <span class="post-row__date">{{ .Date.Format "2006-01-02" }}</span>
+
+            </a>
+          {{ end }}
+
+        </div>
+
+      </div>
+    </article>
+  </main>
+</div>
+
+<script>
+(function () {
+  var container = document.getElementById('posts-list');
+  if (!container) return;
+
+  var buttons = document.querySelectorAll('.posts-sort .sort-option');
+  if (!buttons.length) return;
+
+  var rows = Array.prototype.slice.call(container.querySelectorAll('a.post-row'));
+  var STORAGE_KEY = 'posts-sort';
+
+  function sortBy(mode) {
+    var sorted;
+    if (mode === 'alpha') {
+      sorted = rows.slice().sort(function (a, b) {
+        return a.dataset.title.localeCompare(b.dataset.title, undefined, { sensitivity: 'base' });
+      });
+    } else {
+      mode = 'recent';
+      sorted = rows.slice().sort(function (a, b) {
+        return b.dataset.date.localeCompare(a.dataset.date);
+      });
+    }
+    sorted.forEach(function (row) { container.appendChild(row); });
+    buttons.forEach(function (btn) {
+      btn.classList.toggle('active', btn.dataset.sort === mode);
+    });
+    try { localStorage.setItem(STORAGE_KEY, mode); } catch (e) {}
+  }
+
+  buttons.forEach(function (btn) {
+    btn.addEventListener('click', function () { sortBy(btn.dataset.sort); });
+  });
+
+  var saved = null;
+  try { saved = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+  sortBy(saved === 'alpha' ? 'alpha' : 'recent');
+})();
+</script>
+{{ end }}
