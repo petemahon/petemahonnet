@@ -16,27 +16,58 @@
         </div>
 
         {{ if .Pages }}
-          <ul class="recipe-cards" id="recipe-list">
+          {{/* Diet label → display abbreviation + pill class */}}
+          {{ $dietMap := dict
+            "gluten-free" (dict "short" "GF"    "cls" "pill--gf")
+            "vegetarian"  (dict "short" "VG"    "cls" "pill--vg")
+            "vegan"       (dict "short" "VEGAN" "cls" "pill--vegan")
+            "dairy-free"  (dict "short" "DF"    "cls" "pill--df")
+          }}
+
+          <div class="recipe-table" id="recipe-list">
+            {{/* Header row */}}
+            <div class="recipe-row recipe-row--head">
+              <span>recipe</span>
+              <span>cuisine</span>
+              <span>ease</span>
+              <span>time</span>
+              <span>dietary</span>
+            </div>
+
             {{ range .Pages.ByDate.Reverse }}
-              <li class="recipe-card" data-title="{{ .Title }}" data-date="{{ .Date.Format "2006-01-02" }}">
-                <a href="{{ .RelPermalink }}">
-                  <span class="recipe-card-title">{{ .Title }}</span>
-                  <span class="recipe-card-details">
-                    {{- with .Params.cuisine }}{{ . }}{{ end -}}
-                    {{- with .Params.course }} · {{ . }}{{ end -}}
-                    {{- with .Params.difficulty }} · {{ . }}{{ end -}}
-                    {{- with .Params.totaltime }} · {{ . }}{{ end -}}
-                    {{- with .Params.servings }} · Serves {{ . }}{{ end -}}
-                  </span>
-                  {{- with .Params.diet }}
-                    <span class="recipe-card-diet">
-                      {{- range $i, $d := . }}{{ if $i }}, {{ end }}{{ $d }}{{ end -}}
-                    </span>
-                  {{- end }}
-                </a>
-              </li>
+              <a class="recipe-row"
+                 href="{{ .RelPermalink }}"
+                 data-title="{{ .Title }}"
+                 data-date="{{ .Date.Format "2006-01-02" }}">
+
+                <span class="recipe-row__title">{{ .Title }}</span>
+
+                <span class="recipe-row__cuisine">
+                  {{- with .Params.cuisine }}{{ . }}{{ end -}}
+                </span>
+
+                <span class="recipe-row__ease ease--{{ .Params.difficulty | default "easy" }}">
+                  {{- with .Params.difficulty }}{{ . }}{{ end -}}
+                </span>
+
+                <span class="recipe-row__time">
+                  {{- with .Params.totaltime }}{{ . }}{{ end -}}
+                </span>
+
+                <span class="recipe-row__tags">
+                  {{ range .Params.diet }}
+                    {{ $style := index $dietMap . }}
+                    {{ if $style }}
+                      <span class="pill {{ index $style "cls" }}">{{ index $style "short" }}</span>
+                    {{ else }}
+                      <span class="pill">{{ . | upper }}</span>
+                    {{ end }}
+                  {{ end }}
+                </span>
+
+              </a>
             {{ end }}
-          </ul>
+          </div>
         {{ else }}
           <p class="no-recipes">No recipes found.</p>
         {{ end }}
@@ -47,28 +78,31 @@
 
 <script>
 (function () {
-  var list = document.getElementById('recipe-list');
-  if (!list) return;
+  var container = document.getElementById('recipe-list');
+  if (!container) return;
 
   var buttons = document.querySelectorAll('.recipes-sort .sort-option');
   if (!buttons.length) return;
 
-  var items = Array.prototype.slice.call(list.querySelectorAll('.recipe-card'));
+  /* Collect only data rows (skip the header div) */
+  var rows = Array.prototype.slice.call(
+    container.querySelectorAll('a.recipe-row')
+  );
   var STORAGE_KEY = 'recipes-sort';
 
   function sortBy(mode) {
     var sorted;
     if (mode === 'alpha') {
-      sorted = items.slice().sort(function (a, b) {
+      sorted = rows.slice().sort(function (a, b) {
         return a.dataset.title.localeCompare(b.dataset.title, undefined, { sensitivity: 'base' });
       });
     } else {
       mode = 'recent';
-      sorted = items.slice().sort(function (a, b) {
+      sorted = rows.slice().sort(function (a, b) {
         return b.dataset.date.localeCompare(a.dataset.date);
       });
     }
-    sorted.forEach(function (item) { list.appendChild(item); });
+    sorted.forEach(function (row) { container.appendChild(row); });
 
     buttons.forEach(function (btn) {
       btn.classList.toggle('active', btn.dataset.sort === mode);

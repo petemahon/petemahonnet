@@ -75,9 +75,20 @@
           {{ end }}
 
           {{ with .Params.diet }}
+            {{ $dietMap := dict
+              "gluten-free" (dict "short" "GF"    "cls" "pill--gf")
+              "vegetarian"  (dict "short" "VG"    "cls" "pill--vg")
+              "vegan"       (dict "short" "VEGAN" "cls" "pill--vegan")
+              "dairy-free"  (dict "short" "DF"    "cls" "pill--df")
+            }}
             <div class="recipe-info-row recipe-diet">
               {{ range . }}
-                <span class="diet-tag" itemprop="suitableForDiet">{{ . }}</span>
+                {{ $style := index $dietMap . }}
+                {{ if $style }}
+                  <span class="pill {{ index $style "cls" }}" itemprop="suitableForDiet">{{ index $style "short" }}</span>
+                {{ else }}
+                  <span class="pill" itemprop="suitableForDiet">{{ . | upper }}</span>
+                {{ end }}
               {{ end }}
             </div>
           {{ end }}
