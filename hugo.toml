@@ -1,5 +1,5 @@
 baseurl      = "https://petemahon.net/"
-title        = "Pete Mahon"
+title        = "PeteMahon.net"
 languageCode = "en-us"
 theme        = "hello-friend-ng"
 pagination.pagerSize     = 10
@@ -34,7 +34,7 @@ buildFuture = false
   enableReadingTime = true
   
   # Show a global language switcher in the navigation bar
-  enableGlobalLanguageMenu = true
+  # enableGlobalLanguageMenu = true
 
   # Use custom CSS for non-themed layout 
   customCSS = ["/css/custom.css"]
@@ -90,8 +90,8 @@ buildFuture = false
   #   maxWidth = "50px"
 
   #[[params.social]]
-  #name = "linkedin"
-  #url  = "https://www.linkedin.com/in/petemahon"
+  name = "linkedin"
+  url  = "https://www.linkedin.com/in/petemahon"
 
 [taxonomies]
     category = "categories"
