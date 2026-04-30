@@ -40,8 +40,9 @@
         {{ end }}
       </ol>
     {{ else }}
+      {{ $firstPost := index $seriesPages 0 }}
       <p class="series-nav-header">
-        Part {{ add $currentIndex 1 }} of {{ $totalCount }} in <strong>{{ $seriesName }}</strong>
+        Part {{ add $currentIndex 1 }} of {{ $totalCount }} in <a href="{{ $firstPost.RelPermalink }}"><strong>{{ $seriesName }}</strong></a>
       </p>
       <div class="series-nav-links">
         {{ $prev := index $seriesPages (sub $currentIndex 1) }}

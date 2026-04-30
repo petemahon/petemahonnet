@@ -223,6 +223,19 @@
   grid-column: 1 / -1;
 }
 
+/* Series navigation header — series title link */
+.series-nav-header a,
+.series-nav-header a strong {
+  color: inherit;
+  text-decoration: none;
+}
+
+.series-nav-header a:hover,
+.series-nav-header a:hover strong {
+  color: var(--accent);
+  text-decoration: none;
+}
+
 /* ---------- Recipes — list (5-column grid) ---------- */
 .recipes-header {
   display: flex;
