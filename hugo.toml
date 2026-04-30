@@ -36,9 +36,10 @@ buildFuture = false
   # Show a global language switcher in the navigation bar
   # enableGlobalLanguageMenu = true
 
-  # Use custom CSS for non-themed layout 
+  # Use custom CSS and JS for non-themed layout 
   customCSS = ["/css/custom.css"]
-
+  customJS  = ["/js/back-to-top.js"]
+ 
   [params.author]
   name = "Peter Mahon"
 

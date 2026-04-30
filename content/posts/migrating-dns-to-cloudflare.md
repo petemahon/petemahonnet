@@ -22,7 +22,7 @@ The specific trigger was licensing: once I stopped paying for M365, there was no
 
 Cloudflare has been my go-to for personal projects, going back years. Their free tier is compelling, and I was able to fashion my own dynamic DNS using their APIs to access my home lab remotely. Whilst I have since shifted my network to Tailscale, I still use Cloudflare for DNS hosting on other domains I own, CI/CD integrations, CDN, and Compute. To safely minimise the number of services I consume, Cloudflare was the natural choice for my DNS migration.
 
-> _A quick aside if you also host a website on this domain — Cloudflare bundles some things worth knowing about:_
+> _A quick aside if you also host a website on this domain - Cloudflare bundles some things worth knowing about:_
 >
 > - _Speed, Resilience and Redundancy: With thousands of networks all around the world, DNS queries for your site are resolved rapidly; consistently among the fastest DNS providers globally._
 >
@@ -42,7 +42,7 @@ Download your records in a Zone file, and keep a copy handy as backup, until you
 
 ## Setting up the Cloudflare side
 
-If you haven't previously signed up with Cloudflare, do so now. Ideally, don't use an email address that's hosted on one of the domains you're transferring — if that domain's mail breaks, you'd be locked out of the account you need to fix it. Don't forget to set up a Passkey (or at a minimum, 2FA).
+If you haven't previously signed up with Cloudflare, do so now. Ideally, don't use an email address that's hosted on one of the domains you're transferring - if that domain's mail breaks, you'd be locked out of the account you need to fix it. Don't forget to set up a Passkey (or at a minimum, 2FA).
 
 Once logged in, head over to the Domains section and click Add Domain. You can choose to fully transfer your domain to Cloudflare and have them as your registrar, but for this purpose, I chose to simply connect my domain.
 
@@ -76,7 +76,7 @@ Once it's all verified, you're good to go. Leave the records intact on the Micro
 
 ## Gotchas I hit
 
-- **TTL (Time to Live)**: Check that none of your M365-related records (MX, SPF, DKIM, DMARC) have a TTL longer than 3600 seconds (1 hour) before you cut over. TTL tells resolvers how long to cache a DNS answer — DNS being the internet's phonebook that translates names like `petemahon.net` into addresses your mail client can actually reach. A long TTL means old answers stick around. I'd forgotten my MX records were set to 86,400 seconds — a full 24 hours — which would have left mail hitting the old Microsoft servers for a day after the cutover. This matters in [post 3]({{< ref "posts/proton-mail-custom-domain.md" >}}) when we flip MX records to Proton.
+- **TTL (Time to Live)**: Check that none of your M365-related records (MX, SPF, DKIM, DMARC) have a TTL longer than 3600 seconds (1 hour) before you cut over. TTL tells resolvers how long to cache a DNS answer - DNS being the internet's phonebook that translates names like `petemahon.net` into addresses your mail client can actually reach. A long TTL means old answers stick around. I'd forgotten my MX records were set to 86,400 seconds - a full 24 hours - which would have left mail hitting the old Microsoft servers for a day after the cutover. This matters in [post 3]({{< ref "posts/proton-mail-custom-domain.md" >}}) when we flip MX records to Proton.
 
 - **Cloudflare Proxy Feature**: Most DNS records which we will change during this exercise should NOT be proxied with Cloudflare. If your website is hosted on a server and you wish to take advantage of the security features, switch this on in the record editing screen, shown below. However, if like me you are using a provider like Github pages, you don't need to proxy the data. 
 

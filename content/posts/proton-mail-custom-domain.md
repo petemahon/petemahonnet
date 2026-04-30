@@ -1,5 +1,5 @@
 +++
-title = "Proton Mail on a Custom Domain: Aliases, Catch-all, and Migrating Your Inbox"
+title = "Proton Mail on a Custom Domain: Your Address, Aliases and Catch-all"
 date = 2026-04-21T17:00:00+04:00
 draft = false
 
@@ -8,15 +8,15 @@ tags = ["proton-mail", "email", "custom-domain", "aliases", "dns"]
 keywords = ["proton mail", "custom domain", "catch-all", "aliases", "easy switch"]
 
 cover = "/images/proton-migration/proton-custom-domains.webp"
-coverCaption = "Aliases, catch all and migration of email"
+coverCaption = "Your Address, Aliases and Catch-all"
 
 series       = ["Migrating from Microsoft 365 to Proton"]
 series_order = 3
 +++
 
-This is part 3 of a series on moving a personal domain from Microsoft 365 to Proton. [Post 1]({{< ref "posts/why-i-left-microsoft-365-for-proton.md" >}}) covered the why, and [post 2]({{< ref "posts/migrating-dns-to-cloudflare.md" >}}) moved DNS to Cloudflare. This post is the heart of the migration — getting Proton Mail working on a custom domain, understanding how Proton's address model differs from what you're used to, and getting your DNS records right so mail delivery is trusted.
+This is part 3 of a series on moving a personal domain from Microsoft 365 to Proton. [Post 1]({{< ref "posts/why-i-left-microsoft-365-for-proton.md" >}}) covered the why, and [post 2]({{< ref "posts/migrating-dns-to-cloudflare.md" >}}) moved DNS to Cloudflare. This post is the heart of the migration - getting Proton Mail working on a custom domain, understanding how Proton's address model differs from what you're used to, and getting your DNS records right so mail delivery is trusted.
 
-If you've landed here straight from a search engine, the earlier posts aren't prerequisites — you can follow this one standalone, provided you already control your DNS somewhere that lets you add TXT and MX records.
+If you've landed here straight from a search engine, the earlier posts aren't prerequisites - you can follow this one standalone, provided you already control your DNS somewhere that lets you add TXT and MX records.
 
 ## How Proton handles addresses
 
@@ -26,11 +26,11 @@ Proton's model is similar in shape but differs in a few ways that matter in prac
 
 **Primary address**. Every Proton account has one. It's the identity you log in with, and the default From address on outgoing mail. On a custom domain, your primary address is typically `you@yourdomain.com`, although you will still have your core Proton address of `username@proton.me`.
 
-**Aliases**. Additional addresses that deliver into the same inbox. Unlike M365, Proton aliases are first-class: you can send *from* any of them (choosing the From address per message), and each one can be enabled, disabled, or deleted independently. On paid plans, Proton lets you create a generous number of custom-domain aliases — enough that most people never hit the limit. I haven't found anything to indicate that they count towards a limit.
+**Aliases**. Additional addresses that deliver into the same inbox. Unlike M365, Proton aliases are first-class: you can send *from* any of them (choosing the From address per message), and each one can be enabled, disabled, or deleted independently. On paid plans, Proton lets you create a generous number of custom-domain aliases - enough that most people never hit the limit. I haven't found anything to indicate that they count towards a limit.
 
-**Hide-my-email aliases**. A separate category. These are randomly-generated addresses (on Proton's own domain) designed for one-off signups — give one to a service you don't fully trust, and if it ever starts spamming you or leaks, you disable that alias and the mail stops. M365 has no direct equivalent. I had previously been using [DuckDuckGo](https://duckduckgo.com/email/settings/autofill) for this.
+**Hide-my-email aliases**. A separate category. These are randomly-generated addresses (on Proton's own domain) designed for one-off signups - give one to a service you don't fully trust, and if it ever starts spamming you or leaks, you disable that alias and the mail stops. M365 has no direct equivalent. I had previously been using [DuckDuckGo](https://duckduckgo.com/email/settings/autofill) for this.
 
-**Catch-all**. A setting on a custom domain rather than a type of address. With catch-all enabled, *any* address at your domain that doesn't match an existing alias is delivered to a designated mailbox. So mail to `randomword@yourdomain.com` lands in your inbox even though you never created that address. Powerful, but double-edged — more on that later. This is not the same as an alias, as you might never email from these addresses. 
+**Catch-all**. A setting on a custom domain rather than a type of address. With catch-all enabled, *any* address at your domain that doesn't match an existing alias is delivered to a designated mailbox. So mail to `randomword@yourdomain.com` lands in your inbox even though you never created that address. Powerful, but double-edged - more on that later. This is not the same as an alias, as you might never email from these addresses. 
 
 TL;DR: aliases are deliberate, catch-all is permissive, and hide-my-email is disposable. Most setups end up using at least two of the three.
 
@@ -168,7 +168,7 @@ Save your DMARC record at Cloudflare and ensure it is a TXT type record.
 
 ![Cloudflare Dashboard showing setup of DMARC record](/images/proton-migration/cf-dmarc-records.webp)
 
-## Aliases vs catch-all — when each makes sense
+## Aliases vs catch-all - when each makes sense
 
 You need an alias when you want to **send** an email under that identity. If you don't have a catch-all enabled, you also need to add your alias for that domain to ensure those emails arrive in your mailbox. If you had a shared mailbox in Microsoft 365, you will likely want an Alias to be set up with that email address in Proton.
 
@@ -186,7 +186,7 @@ For each of your domains that you have added, you can set up the Catch-All from 
 
 Using a different email address for every service sounds like extra work, but it pays off in ways that become obvious the first time it saves you.
 
-**You can see exactly who leaked your details.** If the address you gave to an airline starts getting spam, you know it was the airline — not your bank, not that shop you used twice three years ago. That knowledge is strangely satisfying, and it lets you quietly disable the leaked alias without touching anything else.
+**You can see exactly who leaked your details.** If the address you gave to an airline starts getting spam, you know it was the airline - not your bank, not that shop you used twice three years ago. That knowledge is strangely satisfying, and it lets you quietly disable the leaked alias without touching anything else.
 
 **It breaks cross-service tracking.** Advertisers and data brokers love matching profiles across services using a shared email address. Give every service its own alias and that trick stops working on you.
 
@@ -194,15 +194,13 @@ Using a different email address for every service sounds like extra work, but it
 
 ### And why catch-all complements it
 
-Catch-all is the opposite instinct — instead of creating deliberate aliases, you accept *everything* sent to your domain. It's useful for a different reason: **you stop losing mail to typos and bad memory**. Someone writes `pete.mahon@` instead of `peter.mahon@`? Still arrives. You signed up to something years ago using an address format you've since forgotten? Still arrives.
+Catch-all is the opposite instinct - instead of creating deliberate aliases, you accept *everything* sent to your domain. It's useful for a different reason: **you stop losing mail to typos and bad memory**. Someone writes `pete.mahon@` instead of `peter.mahon@`? Still arrives. You signed up to something years ago using an address format you've since forgotten? Still arrives.
 
 ### The combined approach
 
-Most people who go down this road end up using both. Catch-all as the safety net that means no legitimate mail is ever lost to a misspelling; deliberate aliases for the things that matter — accounts you want to track, isolate, or be able to cut off cleanly. You get the privacy benefits of unique addresses and the resilience of never missing a message, without having to choose.
+Most people who go down this road end up using both. Catch-all as the safety net that means no legitimate mail is ever lost to a misspelling; deliberate aliases for the things that matter - accounts you want to track, isolate, or be able to cut off cleanly. You get the privacy benefits of unique addresses and the resilience of never missing a message, without having to choose.
 
 
 If you chose to set up a Catch-All, your domain page will now have all green statuses against the domain.
 
 ![Proton Domain status showing fully setup and working with Catch-All enabled](/images/proton-migration/proton-domain-list.webp)
-
-

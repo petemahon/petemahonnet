@@ -2,7 +2,7 @@
 {{/*
   Renders series navigation on posts that have `series` set in front matter.
   - First post in the series (by series_order): shows an index of all posts.
-  - All other posts: show Previous / Next links.
+  - All other posts: show Previous / Next links as side-by-side cards.
   Required front matter:
     series       = ["Series Name"]
     series_order = 1   (integer, 1-based)
@@ -45,10 +45,16 @@
       </p>
       <div class="series-nav-links">
         {{ $prev := index $seriesPages (sub $currentIndex 1) }}
-        <a class="series-nav-prev" href="{{ $prev.RelPermalink }}">← {{ $prev.Title }}</a>
+        <a class="series-nav-prev" href="{{ $prev.RelPermalink }}">
+          <span class="series-nav-label">← previous</span>
+          <span class="series-nav-title">{{ $prev.Title }}</span>
+        </a>
         {{ if lt (add $currentIndex 1) $totalCount }}
           {{ $next := index $seriesPages (add $currentIndex 1) }}
-          <a class="series-nav-next" href="{{ $next.RelPermalink }}">{{ $next.Title }} →</a>
+          <a class="series-nav-next" href="{{ $next.RelPermalink }}">
+            <span class="series-nav-label">next →</span>
+            <span class="series-nav-title">{{ $next.Title }}</span>
+          </a>
         {{ end }}
       </div>
     {{ end }}

@@ -24,7 +24,7 @@ series_order = 11
 
 ## What a proper family plan should look like
 
-*Your wishlist — number of members, storage pooling, shared vaults in Pass, per-member aliases, parental controls, whatever you think the right shape is.*
+*Your wishlist - number of members, storage pooling, shared vaults in Pass, per-member aliases, parental controls, whatever you think the right shape is.*
 
 ## Why this matters for Proton's positioning
 
@@ -32,4 +32,4 @@ series_order = 11
 
 ## Where I landed in the absence of one
 
-*What compromise you actually made — multiple individual accounts, a Duo plus some shared trickery, something else. End the series with the honest state of play.*
+*What compromise you actually made - multiple individual accounts, a Duo plus some shared trickery, something else. End the series with the honest state of play.*

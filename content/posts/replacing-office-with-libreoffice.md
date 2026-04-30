@@ -18,7 +18,7 @@ series_order = 8
 
 *Install path on your OS, first-run experience, and the three or four settings you changed immediately so it didn't feel like using a time capsule.*
 
-## Word, Excel, PowerPoint — what maps to what
+## Word, Excel, PowerPoint - what maps to what
 
 *Writer, Calc, Impress. The honest one-paragraph-each take on how each compares to its Microsoft equivalent for day-to-day use.*
 
@@ -30,6 +30,6 @@ series_order = 8
 
 *If there's a scenario where LibreOffice genuinely isn't enough, name it. Complex pivot tables, tracked changes with external collaborators, whatever it turned out to be for you.*
 
-## Fonts — the one thing everyone forgets
+## Fonts - the one thing everyone forgets
 
-*Calibri, Cambria, Aptos — the Microsoft defaults that aren't licensed on non-Windows systems, and what to do about it.*
+*Calibri, Cambria, Aptos - the Microsoft defaults that aren't licensed on non-Windows systems, and what to do about it.*

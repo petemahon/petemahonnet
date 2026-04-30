@@ -20,7 +20,7 @@ series_order = 10
 
 ## Why that same consolidation is the argument against
 
-*Single point of failure — account compromise, account lockout, vendor direction changes. The case for deliberate separation.*
+*Single point of failure - account compromise, account lockout, vendor direction changes. The case for deliberate separation.*
 
 ## What each does that the other doesn't
 

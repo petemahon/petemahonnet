@@ -14,9 +14,9 @@ series       = ["Migrating from Microsoft 365 to Proton"]
 series_order = 9
 +++
 
-## Proton VPN — what's in the bundle
+## Proton VPN - what's in the bundle
 
-*Tier, country count, device limit — the concrete things that matter, not the marketing. How it compares to a standalone VPN you'd otherwise pay for.*
+*Tier, country count, device limit - the concrete things that matter, not the marketing. How it compares to a standalone VPN you'd otherwise pay for.*
 
 ## WireGuard setup
 

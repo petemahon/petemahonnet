@@ -64,7 +64,7 @@ When I was reviewing Proton's privacy policy, this was the hook I needed:
 
 > Our overriding policy is to collect as little user information (personal data included) as possible to ensure a private user experience when using the Services. We do not have the technical means to access the content of your encrypted emails, files, calendar events, passwords, or notes.
 >
-> — [Proton Privacy Policy, Section 2](https://proton.me/legal/privacy)
+> - [Proton Privacy Policy, Section 2](https://proton.me/legal/privacy)
 
 ## What I wanted the end state to look like
 
@@ -88,4 +88,4 @@ At the time of writing, Proton Unlimited ($119.88 USD per year) allows for 3 cus
 ### Software
 On Windows, usage of Microsoft 365 apps locally requires a license and Linux requires exclusive use of web apps unless you want to use Wine. A shift to LibreOffice would also be required.
 
-With those constraints set, the next step was DNS — which is where this series properly begins.
+With those constraints set, the next step was DNS - which is where this series properly begins.
