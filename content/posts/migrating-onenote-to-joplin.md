@@ -6,7 +6,7 @@ categories = ["posts"]
 tags = ["joplin", "onenote", "notes", "proton-drive", "migration", "open-source", "privacy", "copilot"]
 keywords = ["joplin", "onenote migration", "note-taking", "proton drive sync", "open source notes", "leaving onenote", "copilot opt-out", "para method"]
 cover = "/images/proton-migration/onenote-joplin-migration.webp"
-coverCaption = "More like \"breaking free\" from Microsoft..."
+coverCaption = "Less 'migration', more 'jailbreak'."
 series       = ["Migrating from Microsoft 365 to Proton"]
 series_order = 6
 +++
@@ -57,7 +57,7 @@ A Proton engineer posted publicly on the rclone forum in March 2026[^1] explaini
 
 [^1]: <https://forum.rclone.org/t/proton-drive-x-rclone/53609>
 
-That whole exchange is the reason the post you're reading exists. Microsoft would not handle a deprecated third-party integration like this. The first you'd hear about it would be a Message Centre advisory, a broken script in production, or a forum full of people speculating about what changed. Proton's engineer is in the rclone forum naming what's exempted and why, what's been submitted upstream, what's coming next, and how long the goodwill lasts. I can read all of it, plan around it, and decide that "wait six months for the SDK and a native Linux client" is a better trade than stitching together rclone, WebDAV, Tailscale and a NAS to bridge a gap that's about to be properly closed anyway. That's not a privacy argument exactly - it's the open-source-transparency argument the post was set up to deliver. The privacy is what made me move, and the transparency is what makes the waiting tolerable. I feel like I'm part of the solution and supporting Open Source Software is the right thing to do.
+That whole exchange is the reason the post you're reading exists. Microsoft would not handle a deprecated third-party integration like this. The first you'd hear about it would be a Message Centre advisory, a broken script in production, or a forum full of people speculating about what changed. Proton's engineer is in the rclone forum naming what's exempted and why, what's been submitted upstream, what's coming next, and how long the goodwill lasts. I can read all of it, plan around it, and decide that "wait six months for the SDK and a native Linux client" is a better trade than stitching together rclone, WebDAV, Tailscale and a NAS to bridge a gap that's about to be properly closed anyway. That's not a privacy argument exactly - it's the open-source-transparency argument the post was set up to deliver. The privacy is what made me move, and the transparency is what makes the waiting tolerable.
 
 ## The reckoning
 

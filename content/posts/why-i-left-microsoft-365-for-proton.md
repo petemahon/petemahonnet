@@ -72,20 +72,20 @@ When I was reviewing Proton's privacy policy, this was the hook I needed:
 I didn't want the headache of managing the productivity and communication stack, and I was in love with the end-to-end email encryption offered by Proton. Many people in my security-conscious network already had a Proton email, so this was genuinely advantageous for me.
 
 ### Cross-platform ease of use 
-A OneDrive replacement was essential, and apps for Drive, Mail and Calendar had to be native across all platforms I use. 
+A OneDrive replacement was essential, and apps for Drive, Mail and Calendar had to be native across all platforms I use. The one gap here is Proton Drive on Linux — there's no native desktop client yet, though one is on the way. The web version is good enough in the meantime.
 
 ### Never using the same email twice
-I never use the same email address twice, so access to catch-all configuration and unlimited aliases was also very important.
+I never use the same email address twice, so access to catch-all configuration and unlimited aliases (via SimpleLogin, which is bundled with Proton Unlimited) was also very important.
 
 ### Continuity 
 The migration process must have zero downtime, with no emails lost.
 
 ### Cost
-Costs had to be reasonable, and I would happily have paid more than I was paying for Microsoft (Business Premium license) for the right product. 
+Costs had to be reasonable, and I would happily have paid more than I was paying for Microsoft (Business Standard license) for the right product. 
 
 At the time of writing, Proton Unlimited ($119.88 USD per year) allows for 3 custom domains, which was enough for me to move across with that package.
 
 ### Software
-On Windows, usage of Microsoft 365 apps locally requires a license and Linux requires exclusive use of web apps unless you want to use Wine. A shift to LibreOffice would also be required.
+On Windows, usage of Microsoft 365 apps locally requires a license and Linux requires exclusive use of web apps unless you want to use Wine. I also decided to move to LibreOffice for offline work.
 
 With those constraints set, the next step was DNS - which is where this series properly begins.
