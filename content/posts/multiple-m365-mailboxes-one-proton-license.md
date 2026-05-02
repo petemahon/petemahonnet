@@ -93,3 +93,5 @@ Beyond those four, nothing in daily use felt like a compromise. Send-as works th
 ## Next steps
 
 The next [post]({{< ref "posts/moving-onedrive-files-to-proton-drive.md" >}}) tackles the OneDrive-to-Proton-Drive migration - by which point your M365 license is back on its original mailbox, ready for the file move.
+
+{{< proton-referral >}}

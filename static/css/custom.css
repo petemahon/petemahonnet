@@ -236,6 +236,36 @@
   text-decoration: none;
 }
 
+/* ---------- Referral callout ---------- */
+.referral-callout {
+  background: rgba(176, 101, 0, 0.08);
+  border: 1px solid rgba(176, 101, 0, 0.3);
+  border-left: 4px solid var(--accent);
+  border-radius: 6px;
+  padding: 1.1rem 1.3rem;
+  margin: 2.5rem 0 1rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--fg1);
+}
+
+.referral-callout p {
+  margin: 0;
+}
+
+.referral-callout a {
+  color: var(--fg1);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 2px;
+  transition: color 0.15s ease;
+}
+
+.referral-callout a:hover {
+  color: var(--accent);
+}
+
+
 /* ---------- Recipes — list (5-column grid) ---------- */
 .recipes-header {
   display: flex;

@@ -204,3 +204,5 @@ Most people who go down this road end up using both. Catch-all as the safety net
 If you chose to set up a Catch-All, your domain page will now have all green statuses against the domain.
 
 ![Proton Domain status showing fully setup and working with Catch-All enabled](/images/proton-migration/proton-domain-list.webp)
+
+{{< proton-referral >}}

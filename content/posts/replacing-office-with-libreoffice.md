@@ -7,18 +7,18 @@ categories = ["posts"]
 tags = ["libreoffice", "microsoft-office", "productivity", "privacy"]
 keywords = ["libreoffice", "microsoft office alternative", "open source office", "privacy"]
 
-# cover = ""
+cover = "/images/proton-migration/office-to-libreoffice.webp"
 # coverCaption = ""
 
 series       = ["Migrating from Microsoft 365 to Proton"]
 series_order = 8
 +++
 
-This series isn't about LibreOffice. It's about reclaiming a setup that doesn't sign me in, count my keystrokes, or shove an AI assistant into every corner. LibreOffice is the bit where the office suite stops being a subscription. No licence nags, no mandatory account, no usage telemetry, no Copilot bolted onto every menu. That's the whole pitch. And it's not a fringe move - [several European governments are heading the same way]({{< relref "why-i-left-microsoft-365-for-proton" >}}) for a lot of the same reasons.
+This series isn't about LibreOffice. It's about reclaiming a setup that doesn't sign me in, count my keystrokes, or shove an AI assistant into every corner. LibreOffice is the bit where the office suite stops being a subscription. No licence nags, no mandatory account, no usage telemetry, no Copilot bolted onto every menu. That's the whole point of this shift. And it's not a fringe move - [several European governments are heading the same way]({{< relref "why-i-left-microsoft-365-for-proton" >}}) for a lot of the same reasons.
 
 ## Install and first impressions
 
-It's been on my Linux box for years. Putting it on Windows after uninstalling Office took about five minutes and no drama. The only two things I changed from defaults: a dark colour scheme, and switching the default save format to ODF. Everything else is fine out of the box. The toolbar looks dated - yes - but you stop noticing inside an hour.
+It's been on my Linux box for years. Putting it on Windows after uninstalling Office took about five minutes and no drama. The only two things I changed from defaults: a dark colour scheme, and switching the default save format to ODF (Open Document Format). Everything else is fine out of the box. The toolbar looks dated - yes - but you stop noticing inside an hour and there are options to have an office-esque look and feel.
 
 ## Writer, Calc, Impress - what they replace
 

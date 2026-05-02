@@ -72,3 +72,5 @@ The thing that made the timing of all this non-negotiable was Copilot. Microsoft
 Next was the introduction of actual *Copilot Notebooks*, which is a mashup of Loop shoved inside OneNote, creating more M365 admin woes and making that export almost impossible in future. That was the nail in the coffin. 
 
 The privacy argument was already strong enough on its own, and the transparency argument made waiting for the Linux gap to close feel like a reasonable trade rather than a sacrifice. The notebook I'm typing this in belongs only to me, and that's the whole point.
+
+{{< proton-referral >}}

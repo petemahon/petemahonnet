@@ -72,3 +72,5 @@ What this means in practice is a **real change** in how you find things. Server-
 The integration surface is also gone - Outlook attaching files from OneDrive, Teams threading files into a chat, the rest of the M365 *mesh*. Proton Docs covers documents and spreadsheets in the browser with proper co-authoring inside the Proton ecosystem; it isn't feature-for-feature with Word and Excel on the web, and if your daily work depended on advanced Excel features or the full PowerPoint pipeline you'll feel that. 
 
 The thing I expected to miss but didn't was SharePoint and Teams themselves - the apparent power of all that configuration, the sites and channels and permissioning tools. In practice it was overhead I didn't need. The clearest sign of how much overhead: there are now literally hundreds of Microsoft 365 Message Centre advisories I can blissfully ignore.
+
+{{< proton-referral >}}

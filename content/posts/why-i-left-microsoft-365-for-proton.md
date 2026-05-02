@@ -89,3 +89,5 @@ At the time of writing, Proton Unlimited ($119.88 USD per year) allows for 3 cus
 On Windows, usage of Microsoft 365 apps locally requires a license and Linux requires exclusive use of web apps unless you want to use Wine. I also decided to move to LibreOffice for offline work.
 
 With those constraints set, the next step was DNS - which is where this series properly begins.
+
+{{< proton-referral >}}

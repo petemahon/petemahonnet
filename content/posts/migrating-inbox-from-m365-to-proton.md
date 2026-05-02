@@ -224,3 +224,4 @@ Option 2 for now, transitioning to Option 4 once I've purged the data. I want th
 
 The next [post]({{< ref "posts/multiple-m365-mailboxes-one-proton-license.md" >}}) talks about a rather common scenario - Shared Mailbox migration.
 
+{{< proton-referral >}}
