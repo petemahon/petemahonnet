@@ -63,6 +63,20 @@
   font-size: inherit;
 }
 
+/* ---------- Post meta (date + reading time) ---------- */
+.post-meta {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--fg3);
+  margin: 0.4rem 0 1.5rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.post-meta-separator {
+  margin: 0 0.5rem;
+  opacity: 0.5;
+}
+
 /* ---------- Homepage ---------- */
 .homepage {
   flex: 1 auto;
