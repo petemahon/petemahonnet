@@ -1,13 +1,24 @@
-baseurl      = "https://petemahon.net/"
-title        = "PeteMahon.net"
-languageCode = "en-us"
-theme        = "hello-friend-ng"
-pagination.pagerSize     = 10
-buildFuture = false
+baseurl               = "https://petemahon.net/"
+title                 = "PeteMahon.net"
+Language.Locale       = "en-GB"
+theme                 = "hello-friend-ng"
+pagination.pagerSize  = 10
+buildFuture           = false
+canonifyURLs          = true
+copyright             = "Peter Mahon"
+enableRobotsTXT       = true
 
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
+
+[sitemap]
+    changefreq = "weekly"
+    priority = 0.5
+
+[permalinks]
+    posts = "/posts/:year/:month/:slug/"
+    page = "/:slug/"
 
 [params]
   dateform        = "Jan 2, 2006"
