@@ -7,3 +7,7 @@ hugo_stats.json
 
 # Temporary lock file while building
 /.hugo_build.lock
+
+# Claude Code: keep memory and skills local, out of the public repo
+/CLAUDE.md
+.claude/
